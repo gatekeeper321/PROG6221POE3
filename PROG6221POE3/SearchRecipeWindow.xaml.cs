@@ -19,6 +19,9 @@ namespace PROG6221POE3
     {
         string ingName;
         string foodGroup;
+        string recipeName;
+
+        double numCalories;
 
         private MainWindow mainWindow;
         private Methods.Method method = new Methods.Method();
@@ -30,8 +33,8 @@ namespace PROG6221POE3
 
         private void SearchName(object sender, RoutedEventArgs e)
         {
-            foodGroup = cmbFoodGroup.SelectedItem.ToString();
-            rtbDisplay.AppendText(method.DisplayRecipeIngredient(foodGroup));
+            recipeName = txtSearchName.Text;
+            rtbDisplay.AppendText(method.DisplayRecipe(recipeName));
         }
 
         private void SearchGroup(object sender, RoutedEventArgs e)
@@ -53,7 +56,8 @@ namespace PROG6221POE3
 
         private void SearchCalories(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement search by calories logic
+            numCalories = Convert.ToDouble(txtSearchCalories.Text);
+            rtbDisplay.AppendText(method.DisplayRecipeMaxCalories(numCalories));
         }
 
         private void Back(object sender, RoutedEventArgs e)

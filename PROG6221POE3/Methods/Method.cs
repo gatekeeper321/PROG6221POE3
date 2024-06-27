@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace PROG6221POE3.Methods
@@ -27,8 +28,7 @@ namespace PROG6221POE3.Methods
         public void AddRecipe(string recipeName) 
         {
             recipes.Add(new Recipe(recipeName, ingredients, instructions, 1));
-            ingredients.Clear();
-            instructions.Clear();
+            MessageBox.Show("Recipe added successfully!");
         }
 
         public double CalculateTotalCalories(string recipeName) //method to calculate total calories in a recipe
@@ -71,13 +71,11 @@ namespace PROG6221POE3.Methods
                 {
                     ToString += "\nSTEP " + instruction.stepNumber + ":\n" + instruction.step;
                 }
-
-                //ToString += "\n\n------------------------------------------------------";
             }
             return ToString;
         }
 
-        public string DisplayRecipe()
+        public string DisplayRecipe(string recipeName)
         {
             string ToString = "";
 
@@ -101,14 +99,12 @@ namespace PROG6221POE3.Methods
                     {
                         ToString += "\nSTEP " + instruction.stepNumber + ":\n" + instruction.step;
                     }
-
-                    //ToString += "\n\n------------------------------------------------------";
                 }
             }
             return ToString;
         }
 
-        public string DisplayRecipeIngredient(string ingName)
+        public string DisplayRecipeIngredient(string ingName) //diplays all recipes with selected ingedient
         {
             string ToString = "";
             int count = 0; 
@@ -129,7 +125,7 @@ namespace PROG6221POE3.Methods
             return ToString;
         }
 
-        public string DisplayRecipeGroup(string foodGroup)
+        public string DisplayRecipeGroup(string foodGroup) //diplays all recipes with selected food group
         {
             string ToString = "";
             int count = 0;
@@ -150,6 +146,25 @@ namespace PROG6221POE3.Methods
             return ToString;
         }
 
+        public string DisplayRecipeMaxCalories(double numCalories) //diplays all recipes with total calories under selected amount
+        {
+            string ToString = "";
+            int count = 0;
+            double totalCalories = 0;
 
+            recipes = recipes.OrderBy(r => r.name).ToList();
+
+            foreach (Recipe recipe in recipes)
+            {
+                totalCalories = CalculateTotalCalories(recipe.name);
+                if (totalCalories <= numCalories) 
+                {
+                    count++;
+                    ToString += count + ") " + recipe.name + "Calories: " + totalCalories + "\n";
+                }
+            }
+            return ToString;
+        }
+        
     }
 }
