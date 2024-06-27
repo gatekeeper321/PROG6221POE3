@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using static System.Net.Mime.MediaTypeNames;
 
+
+
 namespace PROG6221POE3.Methods
 {
     internal class Method
@@ -14,6 +16,8 @@ namespace PROG6221POE3.Methods
         List<Recipe> recipes = new List<Recipe>();
         List<Ingredient> ingredients = new List<Ingredient>();
         List<Instruction> instructions = new List<Instruction>();
+
+
 
         public void AddIngredient(string ingName, double ingQuantity, string ingUnit, string ingFoodGroup, double ingNumCalories) 
         {
@@ -28,7 +32,7 @@ namespace PROG6221POE3.Methods
         public void AddRecipe(string recipeName) 
         {
             recipes.Add(new Recipe(recipeName, ingredients, instructions, 1));
-            MessageBox.Show("Recipe added successfully!");
+            MessageBox.Show("Recipe added successfully! total num recipes is now " + recipes.Count);
         }
 
         public double CalculateTotalCalories(string recipeName) //method to calculate total calories in a recipe
@@ -51,28 +55,29 @@ namespace PROG6221POE3.Methods
 
         public string DisplayAllRecipes() 
         {
-            string ToString = "";
+            string result = "";
 
             recipes = recipes.OrderBy(r => r.name).ToList();
 
             foreach (Recipe recipe in recipes)
             {
-                ToString += "\t\tRecipe Name:" + recipe.name;
-                ToString += "\n\t\tIngredients:";
+                result = result + "\t\tRecipe Name:" + recipe.name;
+                result = result + "\n\t\tIngredients:";
 
                 foreach (Ingredient ingredient in recipe.Ingredients)
                 {
-                    ToString += "\n1)\t\t " + ingredient.name + "\nFood Group:\t\t" + ingredient.foodGroup + "\nQuantity:\t\t" + ingredient.quantity + " " + ingredient.unit + "\nCalories:\t\t" + ingredient.calories;
+                    result = result + "\n1)\t\t " + ingredient.name + "\nFood Group:\t\t" + ingredient.foodGroup + "\nQuantity:\t\t" + ingredient.quantity + " " + ingredient.unit + "\nCalories:\t\t" + ingredient.calories;
                 }
 
-                ToString += "\n\nTotal Calories: " + CalculateTotalCalories(recipe.name); //adds total calories
+                result = result + "\n\nTotal Calories: " + CalculateTotalCalories(recipe.name); //adds total calories
 
                 foreach (Instruction instruction in recipe.Instructions)
                 {
-                    ToString += "\nSTEP " + instruction.stepNumber + ":\n" + instruction.step;
+                    result = result + "\nSTEP " + instruction.stepNumber + ":\n" + instruction.step;
                 }
             }
-            return ToString;
+            MessageBox.Show(result + " " + recipes.Count);
+            return result;
         }
 
         public string DisplayRecipe(string recipeName)
@@ -163,8 +168,30 @@ namespace PROG6221POE3.Methods
                     ToString += count + ") " + recipe.name + "Calories: " + totalCalories + "\n";
                 }
             }
+            
             return ToString;
         }
-        
+
+        public string DeleteRecipe() //method to delete a recipe
+        {
+            string recipeName = "";
+
+            Console.Clear();
+
+            Console.WriteLine("Enter the name of the recipe you would like to erase:");
+            recipeName = Console.ReadLine();
+
+            foreach (Recipe recipe in recipes)
+            {
+                if (recipe.name == recipeName)
+                {
+                    recipes.Remove(recipe);
+                    break;
+                }
+            }
+
+            return "Recipe Successfully Erased!";
+        }
+
     }
 }

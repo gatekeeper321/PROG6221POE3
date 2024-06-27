@@ -26,6 +26,8 @@ namespace PROG6221POE3
         private MainWindow mainWindow;
         private Methods.Method method = new Methods.Method();
 
+
+
         public SearchRecipeWindow()
         {
             InitializeComponent();
