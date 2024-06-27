@@ -1,0 +1,139 @@
+﻿<Window x:Name="spnlOne" x:Class="PROG6221POE3.CreateRecipeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG6221POE3"
+        mc:Ignorable="d"
+        Height="500" Width="750" Background="#FFF1BFBF"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <Label x:Name="lblAppName" Content="Recipe Manager" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,10,0,0" Height="45" Width="180"/>
+        <Button x:Name="btnSubmit" Content="Complete" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Height="29" Width="138" Click="Submit" IsEnabled="False"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="36" Width="100" Click="Back"/>
+        <Label Content="create a recipe below" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top"/>
+
+        <Border x:Name="brdrRecipeOne" Margin="166,100,166,148" CornerRadius="20" BorderBrush="Black" BorderThickness="2">
+            <Border.Background>
+                <ImageBrush ImageSource="/cuttingboard.jpg"/>
+            </Border.Background>
+            <Grid VerticalAlignment="Top">
+                <Grid x:Name="gridRecipe" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblSpace" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="0"/>
+
+                    <Label x:Name="lblRecipeName" Content="Recipe name:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="1" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtRecipeName" TextWrapping="Wrap" Text="Name" Height="23" Grid.Column="1" Grid.Row="1"/>
+
+                    <Label x:Name="lblNumIngredients" Content="Number of Ingredients:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="2" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtNumIngredients" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="1" Grid.Row="2"/>
+
+                    <Label x:Name="lblNumSteps" Content="Number of Steps:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="3" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtNumSteps" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="1" Grid.Row="3"/>
+                    
+                    <Button Content="Add Ingredients" Height="23" Grid.Column="1" Grid.Row="4" Click="AddIngredients"/>
+                </Grid>
+
+                <Grid x:Name="gridIngredient" VerticalAlignment="Top" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblSpace2" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="0"/>
+
+                    <Label x:Name="lblIngName" Content="Ingredient name:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="1" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtIngName" TextWrapping="Wrap" Text="" Height="23" Grid.Column="1" Grid.Row="1"/>
+
+                    <Label x:Name="lblIngQuantity" Content="Quantity of Ingredient:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="2" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtQuantity" TextWrapping="Wrap" Text="" Height="23" Grid.Column="1" Grid.Row="2"/>
+
+                    <Label x:Name="lblIngMeasurement" Content="Measurement Type:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="3" Background="White" Opacity="0.5"/>
+                    <ComboBox x:Name="cmbMeasurement" Grid.Column="1" Grid.Row="3">
+                        <ComboBoxItem Content="drops"/>
+                        <ComboBoxItem Content="Teaspoon"/>
+                        <ComboBoxItem Content="Tablespoon"/>
+                        <ComboBoxItem Content="Cup"/>
+                        <ComboBoxItem Content="Whole"/>
+                    </ComboBox>
+
+                    <Label x:Name="lblIngCalories" Content="Amount of Calories:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="4" Background="White" Opacity="0.5"/>
+                    <TextBox x:Name="txtNumCalories" TextWrapping="Wrap" Text="" Height="23" Grid.Column="1" Grid.Row="4"/>
+
+                    <Label x:Name="lblIngGroup" Content="Food Group:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="5" Background="White" Opacity="0.5"/>
+                    <ComboBox x:Name="cmbFoodGroup" Grid.Column="1" Grid.Row="5">
+                        <ComboBoxItem Content="Carbohydrates"/>
+                        <ComboBoxItem Content="Dairy"/>
+                        <ComboBoxItem Content="Fats/Oils"/>
+                        <ComboBoxItem Content="Fruit"/>
+                        <ComboBoxItem Content="Herbs/Spices"/>
+                        <ComboBoxItem Content="Protein"/>
+                        <ComboBoxItem Content="Vegetables"/>
+                    </ComboBox>
+
+                    <Button Content="Next" Height="23" Grid.Column="1" Grid.Row="6" Click="NextIngredient"/>
+                </Grid>
+
+                <Grid x:Name="gridSteps" VerticalAlignment="Top" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblSpace3" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="0"/>
+
+                    <Label x:Name="lblStepNum" Content="Step number:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="1" Background="White" Opacity="0.5"/>
+                    <Label x:Name="lblStepNum2" Content="1" FontWeight="Bold" FontSize="11" Grid.Column="1" Grid.Row="1" Background="White" Opacity="0.5"/>
+
+                    <RichTextBox x:Name="rtbStep" Height="50" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+                    <Button Content="Next" Height="23" Grid.Column="1" Grid.Row="4" Click="NextStep"/>
+                </Grid>
+            </Grid>
+        </Border>
+        
+    </Grid>
+
+
+
+
+
+    <!--
+    <Canvas>
+        <TextBox TextWrapping="Wrap" Text="Name" Width="128" HorizontalAlignment="Left" Canvas.Left="280" Canvas.Top="53" VerticalAlignment="Center"/>
+        <Label x:Name="lblRecipeName" Content="Recipe name:" HorizontalAlignment="Left" Canvas.Top="50" VerticalAlignment="Center" FontWeight="Bold" Width="79" FontSize="11" Canvas.Left="61"/>
+        <TextBox TextWrapping="Wrap" Text="0" Width="128" Canvas.Left="280" Canvas.Top="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="lblIngredients" Content="Number of ingredients:" Canvas.Top="97" FontWeight="Bold" Width="132" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="50"/>
+        <Label x:Name="lblSteps" Content="Number of steps:" Canvas.Top="144" FontWeight="Bold" Width="99" FontSize="11" Canvas.Left="61" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox TextWrapping="Wrap" Text="0" Width="128" Canvas.Left="280" Canvas.Top="147" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Canvas>
+    -->
+</Window>
