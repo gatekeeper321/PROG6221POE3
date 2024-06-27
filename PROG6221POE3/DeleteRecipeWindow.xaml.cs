@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221POEPART2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,8 @@ namespace PROG6221POE3
 
         private void DeleteRecipe(object sender, RoutedEventArgs e)
         {
-            
+            recipeName = txtDeleteRecipe.Text;
+            MessageBox.Show(method.DeleteRecipe(recipeName));
         }
 
         private void Back(object sender, RoutedEventArgs e)

@@ -172,25 +172,28 @@ namespace PROG6221POE3.Methods
             return ToString;
         }
 
-        public string DeleteRecipe() //method to delete a recipe
+        public string DeleteRecipe(string recipeName) //method to delete a recipe
         {
-            string recipeName = "";
-
-            Console.Clear();
-
-            Console.WriteLine("Enter the name of the recipe you would like to erase:");
-            recipeName = Console.ReadLine();
+            bool found = false;
 
             foreach (Recipe recipe in recipes)
             {
                 if (recipe.name == recipeName)
                 {
                     recipes.Remove(recipe);
+                    found = true;
                     break;
                 }
             }
 
-            return "Recipe Successfully Erased!";
+            if (found == true)
+            {
+                return "Recipe Successfully Erased!";
+            }
+            else 
+            {
+                return "Recipe not found.";
+            }
         }
 
     }

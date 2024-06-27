@@ -24,34 +24,9 @@
                 <!-- This is the third row -->
             </Grid.RowDefinitions>
 
-            <Button x:Name="btnSearchAll" Content="Search All Recipes" Height="23" Grid.Column="0" Grid.Row="0" Click="SearchAll"/>
-
-            <Label x:Name="lblRecipeName" Content="Recipe name:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="1" Background="White" Opacity="0.5"/>
-            <TextBox x:Name="txtSearchRecipeName" TextWrapping="Wrap" Text="" Height="23" Grid.Column="0" Grid.Row="2"/>
-            <Button x:Name="btnSearchName" Content="Search by Name" Height="23" Grid.Column="0" Grid.Row="3" Click="SearchName"/>
-
-            <Label x:Name="space" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="4"/>
-            <Label x:Name="lblFoodGroup" Content="Food Group:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="5" Background="White" Opacity="0.5"/>
-            <ComboBox x:Name="cmbFoodGroup" Grid.Column="0" Grid.Row="6">
-                <ComboBoxItem Content="Carbohydrates"/>
-                <ComboBoxItem Content="Dairy"/>
-                <ComboBoxItem Content="Fats/Oils"/>
-                <ComboBoxItem Content="Fruit"/>
-                <ComboBoxItem Content="Herbs/Spices"/>
-                <ComboBoxItem Content="Protein"/>
-                <ComboBoxItem Content="Vegetables"/>
-            </ComboBox>
-            <Button x:Name="btnSearchGroup" Content="Search by Food Group" Height="23" Grid.Column="0" Grid.Row="7" Click="SearchGroup"/>
-
-            <Label x:Name="space2" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="8"/>
-            <Label x:Name="lblIngredient" Content="Ingredient:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="9" Background="White" Opacity="0.5"/>
-            <TextBox x:Name="txtSearchName" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="0" Grid.Row="10"/>
-            <Button x:Name="btnSearchIngredient" Content="Search by Ingredient" Height="23" Grid.Column="0" Grid.Row="11" Click="SearchIngredient"/>
-
-            <Label x:Name="space3" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="12"/>
-            <Label x:Name="lblCalories" Content="Max Number of Calories:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="13" Background="White" Opacity="0.5"/>
-            <TextBox x:Name="txtSearchCalories" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="0" Grid.Row="14"/>
-            <Button x:Name="btnSearchCalories" Content="Search with Max Calories Limited" Height="23" Grid.Column="0" Grid.Row="15" Click="SearchCalories"/>
+            <Label x:Name="lblDeleteRecipe" Content="Recipe name:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="0" Background="White" Opacity="0.5"/>
+            <TextBox x:Name="txtDeleteRecipe" TextWrapping="Wrap" Text="" Height="23" Grid.Column="0" Grid.Row="1"/>
+            <Button x:Name="btnDelete" Content="Delete Recipe" Height="23" Grid.Column="0" Grid.Row="2" Click="DeleteRecipe"/>
 
 
 
