@@ -21,49 +21,39 @@ namespace PROG6221POE3
     /// </summary>
     public partial class ScaleRecipeWindow : Window
     {
-        private Methods.Method method = new Method();
-        MainWindow mainWindow = new MainWindow();
+        private Method method;
+        private MainWindow mainWindow;
 
         double scale;
         string recipeName;
 
-        public ScaleRecipeWindow()
+        public ScaleRecipeWindow(MainWindow mainWindow, Method method)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.method = method;
         }
 
         private void btnScaleRecipe_click(object sender, RoutedEventArgs e)
         {
             recipeName = txtScaleRecipe.Text;
-            scale = int.Parse(cmbScale.SelectedItem?.ToString());
+
+            ComboBoxItem selectedScale = (ComboBoxItem)cmbScale.SelectedItem;
+            double scale = double.Parse(selectedScale.Content.ToString());
+
             method.ScaleRecipe(recipeName, scale);
-            MessageBox.Show("Recipe has been scaled by " + scale + "x");
         }
 
         private void btnRescaleRecipe_click(object sender, RoutedEventArgs e)
         {
             recipeName = txtRecipeRescale.Text;
             method.RescaleRecipe(recipeName);
-            MessageBox.Show("Recipe has been rescaled");
         }
 
         private void btnBackfromScale_click(object sender, RoutedEventArgs e)
         {
-            if (mainWindow == null || !mainWindow.IsLoaded)
-            {
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Hide();
-            }
-            else
-            {
-                mainWindow.Focus();
-            }
-        }
-
-        private void ScaleRecipe(object sender, RoutedEventArgs e)
-        {
-
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

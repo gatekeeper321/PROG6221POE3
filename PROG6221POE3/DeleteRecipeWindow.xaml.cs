@@ -25,13 +25,13 @@ namespace PROG6221POE3
         double numCalories;
 
         private MainWindow mainWindow;
-        private Methods.Method method = new Method();
+        private Method method;
 
-
-
-        public DeleteRecipeWindow()
+        public DeleteRecipeWindow(MainWindow mainWindow, Method method)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.method = method;
         }
 
         private void DeleteRecipe(object sender, RoutedEventArgs e)
@@ -42,16 +42,8 @@ namespace PROG6221POE3
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            if (mainWindow == null || !mainWindow.IsLoaded)
-            {
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Hide();
-            }
-            else
-            {
-                mainWindow.Focus();
-            }
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

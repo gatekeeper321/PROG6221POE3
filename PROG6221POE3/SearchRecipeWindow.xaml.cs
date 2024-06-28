@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221POE3.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,17 +18,14 @@ namespace PROG6221POE3
 {
     public partial class SearchRecipeWindow : Window
     {
-        string ingName;
-        string foodGroup;
-        string recipeName;
-        double numCalories;
-
         private MainWindow mainWindow;
-        private Methods.Method method = new Methods.Method();
+        private Methods.Method method;
 
-        public SearchRecipeWindow()
+        public SearchRecipeWindow(MainWindow mainWindow, Method method)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.method = method;
         }
 
         private void SearchName(object sender, RoutedEventArgs e)
@@ -39,42 +37,34 @@ namespace PROG6221POE3
 
         private void SearchGroup(object sender, RoutedEventArgs e)
         {
-            foodGroup = cmbFoodGroup.SelectedItem.ToString();
-            string result = method.DisplayRecipeIngredient(foodGroup);
-            txtBlock.Text = result;
+            ComboBoxItem selectedGroup = (ComboBoxItem)cmbFoodGroup.SelectedItem;
+            string foodGroup = selectedGroup.Content.ToString();
+
+            if (foodGroup != null)
+            {
+                string result = method.DisplayRecipeGroup(foodGroup);
+                txtBlock.Text = result;
+            }
         }
 
         private void SearchIngredient(object sender, RoutedEventArgs e)
         {
-            string ingName = txtSearchRecipeName.Text;
+            string ingName = txtSearchIngredient.Text;
             string result = method.DisplayRecipeIngredient(ingName);
             txtBlock.Text = result;
         }
 
         private void SearchCalories(object sender, RoutedEventArgs e)
         {
-            double numCalories = Convert.ToDouble(txtSearchCalories.Text);
+            double numCalories = double.Parse(txtSearchCalories.Text);
             string result = method.DisplayRecipeMaxCalories(numCalories);
             txtBlock.Text = result;
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            if (mainWindow == null || !mainWindow.IsLoaded)
-            {
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Hide();
-            }
-            else
-            {
-                mainWindow.Focus();
-            }
-        }
-        private void CreateRecipe(object sender, RoutedEventArgs e)
-        {
-            string recipeName = txtSearchRecipeName.Text;
-            method.AddRecipe(recipeName);
+            mainWindow.Show();
+            this.Close();
         }
 
         private void SearchAll_Click(object sender, RoutedEventArgs e)

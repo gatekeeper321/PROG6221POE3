@@ -54,7 +54,7 @@
             </ComboBox>
             <Label x:Name="lblScaleRecipe" Content="Choose a Factor to scale your recipe by:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="2" Background="White" Opacity="0.5"/>
             <TextBox x:Name="txtScaleRecipe" TextWrapping="Wrap" Text="recipe" Height="23" Grid.Column="0" Grid.Row="3"/>
-            <Button x:Name="btnScaleRecipe" Content="Scale Recipe" Height="23" Grid.Column="0" Grid.Row="4" Click="ScaleRecipe"/>
+            <Button x:Name="btnScaleRecipe" Content="Scale Recipe" Height="23" Grid.Column="0" Grid.Row="4" Click="btnScaleRecipe_click"/>
 
             <Label x:Name="space2" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="5"/>
             

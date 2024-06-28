@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221POE3.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,6 @@ namespace PROG6221POE3
 {
     public partial class CreateRecipeWindow : Window
     {
-        Methods.Method method = new Methods.Method();
 
         string recipeName;
         int numIngredients;
@@ -33,25 +33,19 @@ namespace PROG6221POE3
         double ingnumCalories;
 
         private MainWindow mainWindow;
+        private Method method;
 
-        public CreateRecipeWindow()
+        public CreateRecipeWindow(MainWindow mainWindow, Method method)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.method = method;
         }
-
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            if (mainWindow == null || !mainWindow.IsLoaded)
-            {
-                mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Hide();
-            }
-            else
-            {
-                mainWindow.Focus();
-            }
+            mainWindow.Show();
+            this.Close();
         }
 
         private void Submit(object sender, RoutedEventArgs e)
@@ -60,6 +54,8 @@ namespace PROG6221POE3
             {
                 recipeName = txtRecipeName.Text;
                 method.AddRecipe(recipeName);
+
+                txtRecipeName.Text = "";
 
                 gridRecipe.Visibility = Visibility.Visible;
 
@@ -70,13 +66,16 @@ namespace PROG6221POE3
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
         private void AddIngredients(object sender, RoutedEventArgs e)
         {
             try
             {
                 numIngredients = int.Parse(txtNumIngredients.Text);
                 numSteps = int.Parse(txtNumSteps.Text);
+
+                txtNumIngredients.Text = "";
+                txtNumSteps.Text = "";
 
                 gridIngredient.Visibility = Visibility.Visible;
                 gridRecipe.Visibility = Visibility.Hidden;
@@ -93,8 +92,13 @@ namespace PROG6221POE3
             {
                 ingName = txtIngName.Text;
                 ingQuantity = double.Parse(txtQuantity.Text);
-                ingUnit = cmbMeasurement.SelectedItem?.ToString();
-                ingFoodGroup = cmbFoodGroup.SelectedItem?.ToString();
+
+                ComboBoxItem selectedGroup = (ComboBoxItem)cmbFoodGroup.SelectedItem;
+                string ingFoodGroup = selectedGroup.Content.ToString();
+
+                ComboBoxItem selectedUnit = (ComboBoxItem)cmbMeasurement.SelectedItem;
+                string ingUnit = selectedUnit.Content.ToString();
+
                 ingnumCalories = double.Parse(txtNumCalories.Text);
 
                 countIng++;
@@ -125,6 +129,8 @@ namespace PROG6221POE3
 
             countStep++;
             method.AddStep(countStep, text);
+
+            textRange.Text = "";
 
             if (countStep >= numSteps)
             {

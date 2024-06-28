@@ -24,31 +24,33 @@ namespace PROG6221POE3
         private SearchRecipeWindow searchRecipeWindow;
         private ScaleRecipeWindow scaleRecipeWindow;
         private DeleteRecipeWindow deleteRecipeWindow;
+        private Methods.Method method;
 
         public MainWindow()
         {
             InitializeComponent();
+            this.method = new Methods.Method();
         }
 
-        private void OpenCreateRecipe(object sender, RoutedEventArgs e)
+        private void OpenCreateRecipe(object sender, RoutedEventArgs e) //open create recipe window
         {
             if (createRecipeWindow == null || !createRecipeWindow.IsLoaded)
             {
-                createRecipeWindow = new CreateRecipeWindow();
+                createRecipeWindow = new CreateRecipeWindow(this, method);
                 createRecipeWindow.Show();
                 this.Hide();
             }
             else
             {
-                createRecipeWindow.Focus(); 
+                createRecipeWindow.Focus();
             }
         }
 
-        private void OpenSearchRecipe(object sender, RoutedEventArgs e)
+        private void OpenSearchRecipe(object sender, RoutedEventArgs e) //open search recipe window
         {
             if (searchRecipeWindow == null || !searchRecipeWindow.IsLoaded)
             {
-                searchRecipeWindow = new SearchRecipeWindow();
+                searchRecipeWindow = new SearchRecipeWindow(this, method);
                 searchRecipeWindow.Show();
                 this.Hide();
             }
@@ -58,11 +60,11 @@ namespace PROG6221POE3
             }
         }
 
-        private void OpenRecipeScaling(object sender, RoutedEventArgs e)
+        private void OpenRecipeScaling(object sender, RoutedEventArgs e)//open scale recipe window
         {
             if (scaleRecipeWindow == null || !scaleRecipeWindow.IsLoaded)
             {
-                scaleRecipeWindow = new ScaleRecipeWindow();
+                scaleRecipeWindow = new ScaleRecipeWindow(this, method);
                 scaleRecipeWindow.Show();
                 this.Hide();
             }
@@ -72,11 +74,11 @@ namespace PROG6221POE3
             }
         }
 
-        private void btnOpenDelete_Click(object sender, RoutedEventArgs e)
+        private void btnOpenDelete_Click(object sender, RoutedEventArgs e) //open delete recipe window
         {
             if (deleteRecipeWindow == null || !deleteRecipeWindow.IsLoaded)
             {
-                deleteRecipeWindow = new DeleteRecipeWindow();
+                deleteRecipeWindow = new DeleteRecipeWindow(this, method);
                 deleteRecipeWindow.Show();
                 this.Hide();
             }
@@ -86,11 +88,9 @@ namespace PROG6221POE3
             }
         }
 
-        private void ExitApp(object sender, RoutedEventArgs e)
+        private void ExitApp(object sender, RoutedEventArgs e) //exit application button
         {
             Application.Current.Shutdown();
         }
-
-        
     }
 }
