@@ -65,7 +65,6 @@
       <DependentUpon>SearchRecipeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Methods\Method.cs" />
-    <Compile Include="Methods\Methods.cs" />
     <Compile Include="Recipe\Recipe.cs" />
     <Page Include="CreateRecipeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

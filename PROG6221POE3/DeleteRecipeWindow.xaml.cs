@@ -13,34 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PROG6221POE3.Methods;
-
+//MCPETRIE-ST10263164-PROG6221POE3
 namespace PROG6221POE3
 {
     public partial class DeleteRecipeWindow : Window
     {
-        string ingName;
-        string foodGroup;
         string recipeName;
 
-        double numCalories;
-
+        //instantiating windows
         private MainWindow mainWindow;
         private Method method;
 
-        public DeleteRecipeWindow(MainWindow mainWindow, Method method)
+        public DeleteRecipeWindow(MainWindow mainWindow, Method method) //constructor
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
             this.method = method;
         }
 
-        private void DeleteRecipe(object sender, RoutedEventArgs e)
+        private void DeleteRecipe(object sender, RoutedEventArgs e) //delete recipe button
         {
             recipeName = txtDeleteRecipe.Text;
-            MessageBox.Show(method.DeleteRecipe(recipeName));
+            method.DeleteRecipe(recipeName);
         }
 
-        private void Back(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e) //back button
         {
             mainWindow.Show();
             this.Close();
