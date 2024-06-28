@@ -20,13 +20,10 @@ namespace PROG6221POE3
         string ingName;
         string foodGroup;
         string recipeName;
-
         double numCalories;
 
         private MainWindow mainWindow;
         private Methods.Method method = new Methods.Method();
-
-
 
         public SearchRecipeWindow()
         {
@@ -35,31 +32,30 @@ namespace PROG6221POE3
 
         private void SearchName(object sender, RoutedEventArgs e)
         {
-            recipeName = txtSearchName.Text;
-            rtbDisplay.AppendText(method.DisplayRecipe(recipeName));
+            string recipeName = txtSearchRecipeName.Text;
+            string result = method.DisplayRecipe(recipeName);
+            txtBlock.Text = result;
         }
 
         private void SearchGroup(object sender, RoutedEventArgs e)
         {
             foodGroup = cmbFoodGroup.SelectedItem.ToString();
-            rtbDisplay.AppendText(method.DisplayRecipeIngredient(foodGroup));
+            string result = method.DisplayRecipeIngredient(foodGroup);
+            txtBlock.Text = result;
         }
 
         private void SearchIngredient(object sender, RoutedEventArgs e)
         {
-            ingName = txtSearchRecipeName.Text;
-            rtbDisplay.AppendText(method.DisplayRecipeIngredient(ingName));
-        }
-
-        private void SearchAll(object sender, RoutedEventArgs e)
-        {
-            rtbDisplay.AppendText(method.DisplayAllRecipes());
+            string ingName = txtSearchRecipeName.Text;
+            string result = method.DisplayRecipeIngredient(ingName);
+            txtBlock.Text = result;
         }
 
         private void SearchCalories(object sender, RoutedEventArgs e)
         {
-            numCalories = Convert.ToDouble(txtSearchCalories.Text);
-            rtbDisplay.AppendText(method.DisplayRecipeMaxCalories(numCalories));
+            double numCalories = Convert.ToDouble(txtSearchCalories.Text);
+            string result = method.DisplayRecipeMaxCalories(numCalories);
+            txtBlock.Text = result;
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -74,6 +70,18 @@ namespace PROG6221POE3
             {
                 mainWindow.Focus();
             }
+        }
+        private void CreateRecipe(object sender, RoutedEventArgs e)
+        {
+            string recipeName = txtSearchRecipeName.Text;
+            method.AddRecipe(recipeName);
+        }
+
+        private void SearchAll_Click(object sender, RoutedEventArgs e)
+        {
+            string result = method.DisplayAllRecipes();
+            txtBlock.Text = result;
+            MessageBox.Show(result);
         }
     }
 }

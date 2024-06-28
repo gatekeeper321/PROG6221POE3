@@ -1,5 +1,4 @@
-﻿using PROG6221POEPART2;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PROG6221POE3.Methods;
 
 namespace PROG6221POE3
 {
@@ -25,7 +25,7 @@ namespace PROG6221POE3
         double numCalories;
 
         private MainWindow mainWindow;
-        private Methods.Method method = new Methods.Method();
+        private Methods.Method method = new Method();
 
 
 

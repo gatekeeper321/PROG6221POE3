@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROG6221POE3.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,24 +21,33 @@ namespace PROG6221POE3
     /// </summary>
     public partial class ScaleRecipeWindow : Window
     {
+        private Methods.Method method = new Method();
         MainWindow mainWindow = new MainWindow();
+
+        double scale;
+        string recipeName;
 
         public ScaleRecipeWindow()
         {
             InitializeComponent();
         }
 
-        private void ScaleRecipe(object sender, RoutedEventArgs e)
+        private void btnScaleRecipe_click(object sender, RoutedEventArgs e)
         {
-
+            recipeName = txtScaleRecipe.Text;
+            scale = int.Parse(cmbScale.SelectedItem?.ToString());
+            method.ScaleRecipe(recipeName, scale);
+            MessageBox.Show("Recipe has been scaled by " + scale + "x");
         }
 
-        private void RescaleRecipe(object sender, RoutedEventArgs e)
+        private void btnRescaleRecipe_click(object sender, RoutedEventArgs e)
         {
-
+            recipeName = txtRecipeRescale.Text;
+            method.RescaleRecipe(recipeName);
+            MessageBox.Show("Recipe has been rescaled");
         }
 
-        private void BackfromScale(object sender, RoutedEventArgs e)
+        private void btnBackfromScale_click(object sender, RoutedEventArgs e)
         {
             if (mainWindow == null || !mainWindow.IsLoaded)
             {
@@ -49,6 +59,11 @@ namespace PROG6221POE3
             {
                 mainWindow.Focus();
             }
+        }
+
+        private void ScaleRecipe(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

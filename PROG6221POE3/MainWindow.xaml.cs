@@ -23,6 +23,7 @@ namespace PROG6221POE3
         private CreateRecipeWindow createRecipeWindow;
         private SearchRecipeWindow searchRecipeWindow;
         private ScaleRecipeWindow scaleRecipeWindow;
+        private DeleteRecipeWindow deleteRecipeWindow;
 
         public MainWindow()
         {
@@ -63,6 +64,20 @@ namespace PROG6221POE3
             {
                 scaleRecipeWindow = new ScaleRecipeWindow();
                 scaleRecipeWindow.Show();
+                this.Hide();
+            }
+            else
+            {
+                searchRecipeWindow.Focus();
+            }
+        }
+
+        private void btnOpenDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (deleteRecipeWindow == null || !deleteRecipeWindow.IsLoaded)
+            {
+                deleteRecipeWindow = new DeleteRecipeWindow();
+                deleteRecipeWindow.Show();
                 this.Hide();
             }
             else

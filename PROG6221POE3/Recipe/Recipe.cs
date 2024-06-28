@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//MCPETRIE-ST10263164-PROG6221POEPART2
-namespace PROG6221POEPART2
+//MCPETRIE-ST10263164-PROG6221POE3
+namespace PROG6221POE3
 {
     delegate void RecipeEventHandler(string message); //delegate for event
 
@@ -25,22 +25,22 @@ namespace PROG6221POEPART2
 
         //-----------------DELEGATE-----------------
 
-        public event RecipeEventHandler ExcededCalories;
+        //public event RecipeEventHandler ExcededCalories;
 
-        public void TotalCalories()
-        {
-            double totalCalories = 0;
-
-            foreach (Ingredient ingredient in Ingredients)
-            {
-                totalCalories += ingredient.calories;
-            }
-
-            if (totalCalories > 300)
-            {
-                ExcededCalories?.Invoke("---------WARNING----------\nRECIPE EXCEDES 300 CALORIES");
-            }
-        }
+        //public void TotalCalories()
+        //{
+        //    double totalCalories = 0;
+        //
+        //    foreach (Ingredient ingredient in Ingredients)
+        //    {
+        ////        totalCalories += ingredient.calories;
+       //     }
+       //
+       //     if (totalCalories > 300)
+       //     {
+       //         ExcededCalories?.Invoke("---------WARNING----------\nRECIPE EXCEDES 300 CALORIES");
+       //     }
+       //// }
 
 
     }

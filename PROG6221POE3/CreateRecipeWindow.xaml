@@ -42,7 +42,7 @@
 
                     <Label x:Name="lblNumSteps" Content="Number of Steps:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="3" Background="White" Opacity="0.5"/>
                     <TextBox x:Name="txtNumSteps" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="1" Grid.Row="3"/>
-                    
+
                     <Button Content="Add Ingredients" Height="23" Grid.Column="1" Grid.Row="4" Click="AddIngredients"/>
                 </Grid>
 
@@ -119,21 +119,6 @@
                 </Grid>
             </Grid>
         </Border>
-        
+
     </Grid>
-
-
-
-
-
-    <!--
-    <Canvas>
-        <TextBox TextWrapping="Wrap" Text="Name" Width="128" HorizontalAlignment="Left" Canvas.Left="280" Canvas.Top="53" VerticalAlignment="Center"/>
-        <Label x:Name="lblRecipeName" Content="Recipe name:" HorizontalAlignment="Left" Canvas.Top="50" VerticalAlignment="Center" FontWeight="Bold" Width="79" FontSize="11" Canvas.Left="61"/>
-        <TextBox TextWrapping="Wrap" Text="0" Width="128" Canvas.Left="280" Canvas.Top="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label x:Name="lblIngredients" Content="Number of ingredients:" Canvas.Top="97" FontWeight="Bold" Width="132" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="50"/>
-        <Label x:Name="lblSteps" Content="Number of steps:" Canvas.Top="144" FontWeight="Bold" Width="99" FontSize="11" Canvas.Left="61" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox TextWrapping="Wrap" Text="0" Width="128" Canvas.Left="280" Canvas.Top="147" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Canvas>
-    -->
 </Window>

@@ -19,8 +19,6 @@ namespace PROG6221POE3
     {
         Methods.Method method = new Methods.Method();
 
-
-
         string recipeName;
         int numIngredients;
         int numSteps;
@@ -34,7 +32,6 @@ namespace PROG6221POE3
         string ingFoodGroup;
         double ingnumCalories;
 
-
         private MainWindow mainWindow;
 
         public CreateRecipeWindow()
@@ -42,10 +39,6 @@ namespace PROG6221POE3
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Back(object sender, RoutedEventArgs e)
         {
@@ -63,56 +56,66 @@ namespace PROG6221POE3
 
         private void Submit(object sender, RoutedEventArgs e)
         {
-            method.AddRecipe(recipeName);
+            try
+            {
+                recipeName = txtRecipeName.Text;
+                method.AddRecipe(recipeName);
 
-            gridRecipe.Visibility = Visibility.Visible;
+                gridRecipe.Visibility = Visibility.Visible;
 
-            btnBack.IsEnabled = true;
-            btnSubmit.IsEnabled = false;
-        }
-
-        private void AddIngredients(object sender, RoutedEventArgs e)
-        {
-            recipeName = txtRecipeName.Text;
-            numIngredients = Convert.ToInt32(txtNumIngredients.Text);
-            numSteps = Convert.ToInt32(txtNumSteps.Text);
-            countIng = 0;
-            countStep = 0;
-
-            txtIngName.Text = "";
-            txtQuantity.Text = "";
-            txtNumSteps.Text = "";
-
-            btnBack.IsEnabled = false;
-            gridIngredient.Visibility = Visibility.Visible;
-            gridRecipe.Visibility = Visibility.Hidden;
+                btnSubmit.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         
+        private void AddIngredients(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                numIngredients = int.Parse(txtNumIngredients.Text);
+                numSteps = int.Parse(txtNumSteps.Text);
+
+                gridIngredient.Visibility = Visibility.Visible;
+                gridRecipe.Visibility = Visibility.Hidden;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void NextIngredient(object sender, RoutedEventArgs e)
         {
-            ingName = txtIngName.Text;
-            ingQuantity = Convert.ToDouble(txtQuantity.Text);
-            ingUnit = cmbMeasurement.SelectedItem.ToString();
-            ingFoodGroup = cmbFoodGroup.SelectedItem.ToString();
-            ingnumCalories = Convert.ToDouble(txtNumCalories.Text);
-
-            txtIngName.Text = "";
-            txtQuantity.Text = "";
-            cmbMeasurement.SelectedIndex = -1;
-            cmbFoodGroup.SelectedIndex = -1;
-            txtNumCalories.Text = "";
-
-            countIng++;
-            if (countIng >= numIngredients)
+            try
             {
-                gridSteps.Visibility = Visibility.Visible;
-                gridIngredient.Visibility = Visibility.Hidden;
-            }
-            else 
-            {
+                ingName = txtIngName.Text;
+                ingQuantity = double.Parse(txtQuantity.Text);
+                ingUnit = cmbMeasurement.SelectedItem?.ToString();
+                ingFoodGroup = cmbFoodGroup.SelectedItem?.ToString();
+                ingnumCalories = double.Parse(txtNumCalories.Text);
+
+                countIng++;
                 method.AddIngredient(ingName, ingQuantity, ingUnit, ingFoodGroup, ingnumCalories);
+
+                txtIngName.Text = "";
+                txtQuantity.Text = "";
+                cmbMeasurement.SelectedIndex = -1;
+                cmbFoodGroup.SelectedIndex = -1;
+                txtNumCalories.Text = "";
+
+                if (countIng >= numIngredients)
+                {
+                    gridSteps.Visibility = Visibility.Visible;
+                    gridIngredient.Visibility = Visibility.Hidden;
+                }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void NextStep(object sender, RoutedEventArgs e)
@@ -121,16 +124,12 @@ namespace PROG6221POE3
             string text = textRange.Text;
 
             countStep++;
+            method.AddStep(countStep, text);
 
             if (countStep >= numSteps)
             {
                 gridSteps.Visibility = Visibility.Hidden;
                 btnSubmit.IsEnabled = true;
-            }
-            else
-            {
-                method.AddStep(countStep, text);
-                rtbStep.Document.Blocks.Clear();
             }
         }
     }

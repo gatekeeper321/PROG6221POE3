@@ -13,7 +13,7 @@
             <Button Content="Search for Recipes" Height="40" Width="258" Click="OpenSearchRecipe" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="25" VerticalAlignment="Top"/>
             <Button Content="Recipe Scaling / Rescaling" Height="40" Width="258" HorizontalAlignment="Center" Canvas.Left="33" Canvas.Top="115" VerticalAlignment="Top" Click="OpenRecipeScaling"/>
             <Button x:Name="btnCreateRecipe" Content="Create Recipe" Height="40" Width="258" Click="OpenCreateRecipe" HorizontalAlignment="Center" Canvas.Left="33" Canvas.Top="70" VerticalAlignment="Top"/>
-            <Button Content="Delete Recipe" Height="40" Width="258" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="205" VerticalAlignment="Top"/>
+            <Button Content="Delete Recipe" Height="40" Width="258" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="205" VerticalAlignment="Top" Click="btnOpenDelete_Click"/>
             <Button Content="Exit" Height="40" Width="258" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="251" VerticalAlignment="Top" Click="ExitApp"/>
         </Canvas>
         <Label x:Name="lblAppName_Copy" Content="welcome to the recipe manager application!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,41,0,0" Height="45" Width="324" FontSize="16"/>

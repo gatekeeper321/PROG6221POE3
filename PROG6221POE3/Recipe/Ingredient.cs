@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//MCPETRIE-ST10263164-PROG6221POEPART2
-namespace PROG6221POEPART2
+//MCPETRIE-ST10263164-PROG6221POE3
+namespace PROG6221POE3
 {
     internal class Ingredient
     {

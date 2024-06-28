@@ -52,7 +52,7 @@
                 <!-- This is the seventeenth row -->
             </Grid.RowDefinitions>
 
-            <Button x:Name="btnSearchAll" Content="Search All Recipes" Height="23" Grid.Column="0" Grid.Row="0" Click="SearchAll"/>
+            <Button x:Name="btnSearchAll" Content="Search All Recipes" Height="23" Grid.Column="0" Grid.Row="0" Click="SearchAll_Click"/>
 
             <Label x:Name="lblRecipeName" Content="Recipe name:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="1" Background="White" Opacity="0.5"/>
             <TextBox x:Name="txtSearchRecipeName" TextWrapping="Wrap" Text="" Height="23" Grid.Column="0" Grid.Row="2"/>
@@ -73,15 +73,14 @@
 
             <Label x:Name="space2" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="8"/>
             <Label x:Name="lblIngredient" Content="Ingredient:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="9" Background="White" Opacity="0.5"/>
-            <TextBox x:Name="txtSearchName" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="0" Grid.Row="10"/>
+            <TextBox x:Name="txtSearchIngredient" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="0" Grid.Row="10"/>
             <Button x:Name="btnSearchIngredient" Content="Search by Ingredient" Height="23" Grid.Column="0" Grid.Row="11" Click="SearchIngredient"/>
 
             <Label x:Name="space3" Content="     " FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="12"/>
             <Label x:Name="lblCalories" Content="Max Number of Calories:" FontWeight="Bold" FontSize="11" Grid.Column="0" Grid.Row="13" Background="White" Opacity="0.5"/>
             <TextBox x:Name="txtSearchCalories" TextWrapping="Wrap" Text="0" Height="23" Grid.Column="0" Grid.Row="14"/>
             <Button x:Name="btnSearchCalories" Content="Search with Max Calories Limited" Height="23" Grid.Column="0" Grid.Row="15" Click="SearchCalories"/>
-
-            <RichTextBox x:Name="rtbDisplay" Grid.Column="1" Grid.Row="0" Grid.RowSpan="16" IsReadOnly="True"/>
+            <TextBlock x:Name="txtBlock" Grid.Column="1"  TextWrapping="Wrap" Text="" Grid.RowSpan="16" Background="White"/>
         </Grid>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="36" Width="100" Click="Back"/>
     </Grid>
