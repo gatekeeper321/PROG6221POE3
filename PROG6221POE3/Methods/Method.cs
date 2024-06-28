@@ -60,6 +60,8 @@ namespace PROG6221POE3.Methods
         {
             string result = "";
 
+            recipes = recipes.OrderBy(r => r.name).ToList(); //order recipes alphabetically
+
             foreach (Recipe recipe in recipes) //loops through each recipe in the list of recipes
             {
                 result += "Recipe Name: " + recipe.name + "\n";
@@ -81,6 +83,8 @@ namespace PROG6221POE3.Methods
         public string DisplayRecipe(string recipeName) //displays 1 recipe based on given name
         {
             string result = "";
+
+            recipes = recipes.OrderBy(r => r.name).ToList(); //order recipes alphabetically
 
             foreach (Recipe recipe in recipes) //loops through each recipe in the list of recipes
             {
@@ -109,6 +113,8 @@ namespace PROG6221POE3.Methods
             string result = "Recipes with " + ingName + ":\n\n"; 
             int count = 0;
 
+            recipes = recipes.OrderBy(r => r.name).ToList(); //order recipes alphabetically
+
             foreach (Recipe recipe in recipes) //loops through each recipe in the list of recipes
             {
                 foreach (Ingredient ingredient in recipe.Ingredients) //loops through each ingredient in the recipe
@@ -128,6 +134,8 @@ namespace PROG6221POE3.Methods
         {
             string result = "Recipes that have " + foodGroup + "\n\n";
             int count = 0;
+
+            recipes = recipes.OrderBy(r => r.name).ToList(); //order recipes alphabetically
 
             foreach (Recipe recipe in recipes) //loops through each recipe in the list of recipes
             {
@@ -153,6 +161,8 @@ namespace PROG6221POE3.Methods
         public string DisplayRecipeMaxCalories(double numCalories)
         {
             string result = "Recipes with a max of " + numCalories + " calories:\n\n";
+
+            recipes = recipes.OrderBy(r => r.name).ToList(); //order recipes alphabetically
 
             foreach (Recipe recipe in recipes) //loops through each recipe in the list of recipes
             {
